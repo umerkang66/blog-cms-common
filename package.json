@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "del build",
     "build": "yarn clean && tsc",
-    "pub": "yarn build && yarn version --patch && yarn publish --access=public"
+    "pub": "git add . && git commit -m 'updates' && yarn build && yarn version --patch && yarn publish --access=public"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
