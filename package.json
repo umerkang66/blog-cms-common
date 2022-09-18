@@ -1,0 +1,28 @@
+{
+  "name": "@blog-cms/common",
+  "version": "1.0.0",
+  "description": "Common module for blog-cms",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build/**/*"
+  ],
+  "author": "Umer Kang",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "clean": "del build",
+    "build": "yarn clean && tsc",
+    "pub": "git add . && git commit -m 'updates' && yarn version --patch && yarn build && yarn publish"
+  },
+  "devDependencies": {
+    "del-cli": "^5.0.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^8.5.9",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
