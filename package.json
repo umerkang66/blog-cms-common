@@ -1,6 +1,6 @@
 {
   "name": "@blog-cms/common",
-  "version": "1.0.3",
+  "version": "1.0.0",
   "description": "Common module for blog-cms",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "del build",
     "build": "yarn clean && tsc",
-    "pub": "git add . && git commit -m 'updates' && yarn version --patch && yarn build && yarn publish"
+    "pub": "git add . && git commit -m 'updates' && yarn build && yarn publish"
   },
   "devDependencies": {
     "del-cli": "^5.0.0",
