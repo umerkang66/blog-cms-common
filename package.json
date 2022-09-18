@@ -9,7 +9,6 @@
   ],
   "author": "Umer Kang",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "clean": "del build",
     "build": "yarn clean && tsc",
