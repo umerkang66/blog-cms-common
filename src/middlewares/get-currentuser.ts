@@ -20,6 +20,7 @@ declare global {
 
 export function getCurrentuser(UserModel: mongoose.Model<UserDocument>) {
   return async (req: Request, res: Response, next: NextFunction) => {
+    // this req.cookies and req.cookies.jwt is coming from cookie-parser library
     if (!req.cookies || !req.cookies.jwt) {
       return next();
     }
