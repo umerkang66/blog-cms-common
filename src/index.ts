@@ -9,6 +9,3 @@ export * from './errors/request-validation-error';
 // MIDDLEWARES
 export * from './middlewares/error-handler';
 export * from './middlewares/validate-request';
-
-// COMMON_TYPES
-export * from './common-types/user';
