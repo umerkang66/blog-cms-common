@@ -7,7 +7,9 @@ type AsyncFunc = (
   next: NextFunction
 ) => Promise<void>;
 
-export const catchAsync = (asyncFunc: AsyncFunc) => {
+type NormFunc = (req: Request, res: Response, next: NextFunction) => void;
+
+export const catchAsync = (asyncFunc: AsyncFunc): NormFunc => {
   return (req: Request, res: Response, next: NextFunction) => {
     // currently in this application we are not using the nextFunction
 
