@@ -13,12 +13,12 @@ export interface UserDocument extends mongoose.Document {
 declare global {
   namespace Express {
     interface Request {
-      currentUser?: UserDocument;
+      currentuser?: UserDocument;
     }
   }
 }
 
-export function getCurrentUser(UserModel: mongoose.Model<UserDocument>) {
+export function getCurrentuser(UserModel: mongoose.Model<UserDocument>) {
   return async (req: Request, res: Response, next: NextFunction) => {
     if (!req.cookies || !req.cookies.jwt) {
       return next();
@@ -33,7 +33,7 @@ export function getCurrentUser(UserModel: mongoose.Model<UserDocument>) {
       // payload.id is set in the createSendToken
       const user = await UserModel.findById(payload.id);
       if (!user) return next();
-      req.currentUser = user;
+      req.currentuser = user;
       // if there is error don't do anything, there could be an error, if jwt_key is not correct
     } catch (err) {}
 
