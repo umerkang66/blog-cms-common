@@ -10,6 +10,8 @@ interface UserDocument extends mongoose.Document {
   password: string;
   role: Role;
   passwordChangedAt: Date;
+  passwordResetToken: string;
+  passwordResetExpires: Date;
   changedPasswordAfter: (jwtIssuedAt: number) => boolean;
 }
 
