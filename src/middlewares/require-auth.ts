@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { NotAuthorizedError } from '../errors/not-authorized-error';
+import { NotAuthenticatedError } from '../errors/not-authenticated-error';
 
 /**
  * Send error to client, if user is not logged in.
@@ -12,7 +12,7 @@ export const requireAuth = (
   next: NextFunction
 ) => {
   if (!req.currentuser) {
-    throw new NotAuthorizedError();
+    throw new NotAuthenticatedError();
   }
   next();
 };
