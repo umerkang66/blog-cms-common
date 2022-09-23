@@ -5,6 +5,7 @@ import { NextFunction, Request, Response } from 'express';
 type Role = 'user' | 'writer' | 'admin';
 // interface that describes the properties that user document has
 interface UserDocument extends mongoose.Document {
+  name: string;
   email: string;
   password: string;
   role: Role;
