@@ -14,6 +14,7 @@ export abstract class BaseEmail {
   private from: string;
   protected abstract template: string;
   protected abstract subject: string;
+  protected abstract templatePath: string;
 
   constructor(toUser: ToUser, private url: string) {
     this.toSend = toUser.email;
@@ -47,13 +48,7 @@ export abstract class BaseEmail {
   }
 
   public async send(): Promise<void> {
-    const templatePath = path.join(
-      process.cwd(),
-      'src/email-templates',
-      `${this.template}.pug`
-    );
-
-    const html = pug.renderFile(templatePath, {
+    const html = pug.renderFile(this.templatePath, {
       firstName: this.firstName,
       url: this.url,
       subject: this.subject,
