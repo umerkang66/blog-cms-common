@@ -12,6 +12,7 @@ export * from './middlewares/error-handler';
 export * from './middlewares/validate-request';
 export * from './middlewares/get-currentuser';
 export * from './middlewares/require-auth';
+export * from './middlewares/restrictTo';
 
 // EMAILS
 export * from './emails/base-email';
