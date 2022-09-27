@@ -21,10 +21,16 @@
     "typescript": "^4.8.3"
   },
   "dependencies": {
+    "@types/html-to-text": "^8.1.1",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/nodemailer": "^6.4.6",
+    "@types/pug": "^2.0.6",
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
+    "html-to-text": "^8.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.1"
+    "mongoose": "^6.6.1",
+    "nodemailer": "^6.7.8",
+    "pug": "^3.0.2"
   }
 }
