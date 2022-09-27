@@ -14,5 +14,4 @@ export * from './middlewares/get-currentuser';
 export * from './middlewares/require-auth';
 
 // EMAILS
-export * from './emails/welcome-email';
-export * from './emails/reset-password-email';
+export * from './emails/base-email';
