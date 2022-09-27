@@ -1,4 +1,3 @@
-import path from 'path';
 import nodemailer from 'nodemailer';
 import pug from 'pug';
 import { htmlToText } from 'html-to-text';
