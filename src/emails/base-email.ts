@@ -26,8 +26,7 @@ export abstract class BaseEmail {
   private createTransport() {
     if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        host: 'smtp-relay.sendinblue.com',
-        port: 587,
+        service: 'SendinBlue',
         auth: {
           user: process.env.SENDINBLUE_USERNAME,
           pass: process.env.SENDINBLUE_PASSWORD,
