@@ -16,3 +16,7 @@ export * from './middlewares/restrictTo';
 
 // EMAILS
 export * from './emails/base-email';
+
+// API-UTILS
+export * from './api-utils/api-features';
+export * from './api-utils/handle-factory';
