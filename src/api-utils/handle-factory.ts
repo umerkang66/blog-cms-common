@@ -68,7 +68,7 @@ export function updateOne<T extends Document>(Mod: IMod<T>): Handler {
 export function deleteOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const { id } = req.params;
-    const doc = await Model.findByIdAndDelete(id);
+    const doc = await Mod.findByIdAndDelete(id);
 
     if (!doc) {
       throw new NotFoundError('Document with this id is not found');
