@@ -12,6 +12,8 @@ interface UserDocument extends mongoose.Document {
   passwordChangedAt?: Date;
   passwordResetToken?: string;
   passwordResetExpires?: Date;
+  adminToken?: string;
+  adminTokenExpires?: Date;
   changedPasswordAfter: (jwtIssuedAt: number) => boolean;
 }
 
