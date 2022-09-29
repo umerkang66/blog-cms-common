@@ -4,12 +4,12 @@ import { Document, Model } from 'mongoose';
 import { ApiFeatures } from './api-features';
 
 // T is document, K is ModAttrs
-interface IMod extends Model<Document> {
-  build(modAttrs: any): Document;
+interface IMod<T extends Document> extends Model<T> {
+  build(modAttrs: any): T;
 }
 
 // Where T is Model Type, and K is Document Type
-export function getAll(Mod: IMod): Handler {
+export function getAll<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const query = Mod.find();
     const requestQuery = req.query;
@@ -26,7 +26,7 @@ export function getAll(Mod: IMod): Handler {
   };
 }
 
-export function getOne(Mod: IMod): Handler {
+export function getOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const { id } = req.params;
     const query = Mod.findById(id);
@@ -41,7 +41,7 @@ export function getOne(Mod: IMod): Handler {
 }
 
 // T is document, K is ModAttrs
-export function createOne(Mod: IMod): Handler {
+export function createOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const newDocument = Mod.build(req.body);
     await newDocument.save();
@@ -50,7 +50,7 @@ export function createOne(Mod: IMod): Handler {
   };
 }
 
-export function updateOne(Mod: IMod): Handler {
+export function updateOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     // you should have run the validators (express-validators), before passing
     // the req.body to
@@ -68,7 +68,7 @@ export function updateOne(Mod: IMod): Handler {
   };
 }
 
-export function deleteOne(Mod: IMod): Handler {
+export function deleteOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const { id } = req.params;
     const deletedDocument = await Mod.findByIdAndDelete(id);
