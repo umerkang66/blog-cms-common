@@ -29,51 +29,53 @@ export function getAll<T extends Document>(Mod: IMod<T>): Handler {
 export function getOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const { id } = req.params;
-
     const query = Mod.findById(id);
-    const doc = await query;
-    if (!doc) {
+    // TODO: we have to add populate options
+    const document = await query;
+
+    if (!document) {
       throw new NotFoundError('Document with this id is not found');
     }
-
-    res.send(doc);
+    res.send(document);
   };
 }
 
 // T is document, K is ModAttrs
 export function createOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
-    const newDoc = Mod.build(req.body);
-    await newDoc.save();
+    const newDocument = Mod.build(req.body);
+    await newDocument.save();
 
-    res.status(201).send(newDoc);
+    res.status(201).send(newDocument);
   };
 }
 
 export function updateOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
-    const doc = await Mod.findByIdAndUpdate(req.params.id, req.body, {
+    // you should have run the validators (express-validators), before passing
+    // the req.body to
+    const { id } = req.params;
+    const { body } = req;
+    const updatedDocument = await Mod.findByIdAndUpdate(id, body, {
       new: true,
       runValidators: true,
     });
 
-    if (!doc) {
+    if (!updatedDocument) {
       throw new NotFoundError('Document with this id is not found');
     }
-
-    res.send(doc);
+    res.send(updatedDocument);
   };
 }
 
 export function deleteOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const { id } = req.params;
-    const doc = await Mod.findByIdAndDelete(id);
+    const deletedDocument = await Mod.findByIdAndDelete(id);
 
-    if (!doc) {
+    if (!deletedDocument) {
       throw new NotFoundError('Document with this id is not found');
     }
-
     res.status(204).send(null);
   };
 }

@@ -1,6 +1,7 @@
 export class ApiFeatures {
   private static excludedFields = ['page', 'sort', 'limit', 'fields'];
 
+  // query is mongoose query, and requestQuery is req.query
   constructor(private query: any, private requestQuery: any) {}
 
   public getQuery() {
@@ -51,7 +52,7 @@ export class ApiFeatures {
   }
 
   public paginate(): this {
-    // /api/v1/blogs?page=2&limit=10
+    // /api/blogs?page=2&limit=10
     const page = parseInt(this.requestQuery.page) || 1;
     const limit = parseInt(this.requestQuery.limit) || 20;
 
