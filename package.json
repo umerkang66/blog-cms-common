@@ -1,6 +1,6 @@
 {
   "name": "@blog-cms/common",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "description": "Common module for blog-cms",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
