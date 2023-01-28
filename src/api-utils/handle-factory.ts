@@ -8,7 +8,6 @@ interface IMod<T extends Document> extends Model<T> {
   build(modAttrs: any): T;
 }
 
-// Where T is Model Type, and K is Document Type
 export function getAll<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const query = Mod.find();
@@ -40,7 +39,6 @@ export function getOne<T extends Document>(Mod: IMod<T>): Handler {
   };
 }
 
-// T is document, K is ModAttrs
 export function createOne<T extends Document>(Mod: IMod<T>): Handler {
   return async (req, res) => {
     const newDocument = Mod.build(req.body);
